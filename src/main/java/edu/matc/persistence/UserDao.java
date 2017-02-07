@@ -3,6 +3,8 @@ package edu.matc.persistence;
 import edu.matc.entity.User;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -34,8 +36,9 @@ public class UserDao {
      * @return user
      */
     public User getUser(int id) {
-        //TODO return a user for the given id
-        return null;
+        Session session = SessionFactoryProvider.getSessionFactory().openSession();
+        User user = (User) session.get(User.class, id);
+        return user;
     }
 
     /**
@@ -45,8 +48,10 @@ public class UserDao {
      * @return the id of the inserted record
      */
     public int addUser(User user) {
-        //TODO add the user and return the id of the inserted user
-        int id = 0;
+        Session session = SessionFactoryProvider.getSessionFactory().openSession();
+        Transaction transaction = session.beginTransaction();
+        int id = (int)session.save(user);
+        transaction.commit();
         return id;
     }
 
@@ -55,18 +60,23 @@ public class UserDao {
      * @param id the user's id
      */
     public void deleteUser(int id) {
-        // TODO delete the user with the given id
-
+        Session session = SessionFactoryProvider.getSessionFactory().openSession();
+        Transaction transaction = session.beginTransaction();
+        User user = (User) session.get(User.class, id);
+        session.delete(user);
+        transaction.commit();
     }
+
 
     /**
      * Update the user
      * @param user
      */
-
     public void updateUser(User user) {
-        // TODO update the user
-
+        Session session = SessionFactoryProvider.getSessionFactory().openSession();
+        Transaction transaction = session.beginTransaction();
+        session.update(user);
+        transaction.commit();
     }
 
 
