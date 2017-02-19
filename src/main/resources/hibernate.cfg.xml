@@ -10,7 +10,7 @@
 
         <!-- Database connection settings -->
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="connection.url">jdbc:mysql://localhost:3306/sample</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/vagantescholar</property>
         <property name="connection.username">root</property>
         <property name="connection.password">l33tdigglemysql</property>
 
@@ -21,7 +21,18 @@
         <property name="show_sql">true</property>
 
         <!-- List the annotated entity class/es -->
-        <mapping class="edu.matc.entity.User"/>
+        <mapping class="edu.matc.entity.Affinity"/>
+        <mapping class="edu.matc.entity.AffinityLevel"/>
+        <mapping class="edu.matc.entity.Area"/>
+        <mapping class="edu.matc.entity.AreaProp"/>
+        <mapping class="edu.matc.entity.Background"/>
+        <mapping class="edu.matc.entity.Class"/>
+        <mapping class="edu.matc.entity.Item"/>
+        <mapping class="edu.matc.entity.ItemProp"/>
+        <mapping class="edu.matc.entity.MonsterArea"/>
+        <mapping class="edu.matc.entity.Monster"/>
+        <mapping class="edu.matc.entity.Prop"/>
+        <mapping class="edu.matc.entity.Secret"/>
 
     </session-factory>
 

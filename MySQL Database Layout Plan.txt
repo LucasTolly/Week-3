@@ -1,0 +1,69 @@
+Class
+	ClassId (Primary)
+	ClassName (VarChar(255))
+	StartingStrength
+	StartingDexterity
+	StartingVitality
+	StartingIntelligence
+	StartingLuck
+
+Affinity
+	ClassAffinityId (Primary)
+	ClassId (Foreign)
+	AffinityName (VarChar(255))
+
+AffinityLevel
+	AffinityLevelId (Primary)
+	ClassAffinityId (Foreign)
+	Level (Integer)
+	Description (VarChar(255))
+
+Background (Linking between Class and Secret)
+	BackgroundId (Primary)
+	ClassId (Foreign)
+	Description (VarChar(255))
+	UnlockedBySecret (Boolean)
+	SecretId (Foreign)
+	
+Secret
+	SecretId (Primary)
+	Title (VarChar(255))
+	UnlockMethod (VarChar(255))
+	Description (VarChar(255))
+
+Area
+	AreaId (Primary)
+	Description (VarChar(255))
+
+Monster
+	MonsterId (Primary)
+	Description (VarChar(255))
+	HP (Integer)
+
+MonsterArea (Linking between Area and Monster)
+	MonsterAreaId (Primary)
+	AreaId (Foreign)
+	MonsterId (Foreign)
+	
+Prop
+	PropId (Primary)
+	Type (Shrine, Door, )
+	Description (VarChar(255))
+	
+AreaProp
+	AreaPropId (Primary)
+	AreaId (Foreign)
+	PropId (Foreign)
+	
+Item
+	ItemId (Primary)
+	Title (VarChar(255))
+	Type (Weapon, Armor, Spellbook, Consumable)
+	Description (VarChar(255))
+	
+ItemProp
+	ItemProp (Primary)
+	ItemId (Foreign)
+	Prop (Foreign)
+	
+	
